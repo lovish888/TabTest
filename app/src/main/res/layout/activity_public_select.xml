@@ -7,13 +7,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="xyz.wheretopark.tabtest.publicSelect">
+    tools:context="xyz.wheretopark.tabtest.publicSelect"
+    android:background="#e2dada">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Public"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Cyber Hub"
         android:id="@+id/button"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#00b050"
+        android:textSize="20sp" />
 </RelativeLayout>

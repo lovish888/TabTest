@@ -40,13 +40,12 @@ public class corporateSelect extends AppCompatActivity {
                     query.getFirstInBackground(new GetCallback<ParseObject>() {
                         public void done(ParseObject object, ParseException e) {
                             if (object != null) {
-                                Toast.makeText(corporateSelect.this,object.getObjectId(), Toast.LENGTH_SHORT).show();
-                               /* Bundle bundle = new Bundle();
+                               Bundle bundle = new Bundle();
                                 bundle.putString("Name", object.getObjectId()); //This is for a String
-                                Intent i = new Intent(CompanySelect.this, CompanyShow.class);
+                                Intent i = new Intent(corporateSelect.this, companyShow.class);
                                 i.putExtras(bundle);
                                 startActivity(i);
-                            */}
+                            }
                         }
                     });
                 }

@@ -8,12 +8,12 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="company_list">
-    <item>Select Company from below !</item>
-    <item>Kpmg</item>
-    <item>Pwc</item>
-    <item>Fluor</item>
-    <item>Baxter</item>
-    <!--<item>Aircel</item>
+        <item>Select Company from below !</item>
+        <item>Kpmg</item>
+        <item>Pwc</item>
+        <item>Fluor</item>
+        <item>Baxter</item>
+        <!--<item>Aircel</item>
     <item>Ibm</item>
     <item>Ikea</item>
     <item>Kcipl</item>
