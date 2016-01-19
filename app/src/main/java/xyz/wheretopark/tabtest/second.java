@@ -1,5 +1,6 @@
 package xyz.wheretopark.tabtest;
 
+import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,13 +18,15 @@ import android.widget.TabHost;
 
 public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+    /*TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);*/
+    private TabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabHost = (TabHost)findViewById(R.id.tabhost);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -34,8 +37,10 @@ public class second extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        tabHost.setup();
+        LocalActivityManager mLocalActivityManager = new LocalActivityManager(this, false);
+        mLocalActivityManager.dispatchCreate(savedInstanceState); // state will be bundle your activity state which you get in onCreate
+        tabHost.setup(mLocalActivityManager);
+        //tabHost.setup();
         TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
 
@@ -48,7 +53,6 @@ public class second extends AppCompatActivity
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
-
     }
 
     @Override
