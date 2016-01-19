@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
+import java.lang.*;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -24,10 +26,9 @@ public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     /*TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);*/
     private TabHost tabHost;
-    android.text.format.Time time = new android.text.format.Time();
 
     public int getTime() {
-        return time.HOUR;
+        return android.text.format.Time.HOUR;
     }
 
     @Override
@@ -52,8 +53,8 @@ public class second extends AppCompatActivity
         TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
         tab2.setIndicator("Corporate");
+        if(getTime() <=15 ) {
 
-        if(getTime()>= 7 && getTime() <=20) {
             tab2.setContent(new Intent(this, corporateSelect.class));
         }
         else {
