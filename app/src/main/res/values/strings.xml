@@ -7,7 +7,7 @@
 
     <string name="action_settings">Settings</string>
 
-    <string-array name="spinner2">
+    <string-array name="company_list">
     <item>Select Company from below !</item>
     <item>Kpmg</item>
     <item>Pwc</item>

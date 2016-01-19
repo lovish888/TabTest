@@ -1,5 +1,6 @@
 package xyz.wheretopark.tabtest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,6 @@ public class publicSelect extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(publicSelect.this, "Tanmay", Toast.LENGTH_SHORT).show();
             }
         });
     }
