@@ -20,6 +20,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_second"
-        app:menu="@menu/activity_second_drawer" />
+        app:menu="@menu/activity_second_drawer"
+        android:background="#4b4646" />
 
 </android.support.v4.widget.DrawerLayout>
