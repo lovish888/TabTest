@@ -21,6 +21,13 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_second"
         app:menu="@menu/activity_second_drawer"
-        android:background="#4b4646" />
+        android:background="#ffffff"
+        app:itemTextColor="#000000"
+        app:itemIconTint="#1f4e79"
 
-</android.support.v4.widget.DrawerLayout>
+
+        />
+
+</android.support.v4.widget.DrawerLayout
+
+    >

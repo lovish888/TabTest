@@ -20,16 +20,13 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.util.Date;
 
 public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     /*TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);*/
     private TabHost tabHost;
-
-    public int getTime() {
-        return android.text.format.Time.HOUR;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +50,8 @@ public class second extends AppCompatActivity
         TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
         tab2.setIndicator("Corporate");
-        if(getTime() <=15 ) {
+
+        if(true) {
 
             tab2.setContent(new Intent(this, corporateSelect.class));
         }

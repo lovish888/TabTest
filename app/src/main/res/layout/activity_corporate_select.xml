@@ -17,14 +17,15 @@
         android:id="@+id/company_spin"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:background="#c15555"
-        android:popupBackground="#c15555"
+        android:background="#00b050"
+        android:popupBackground="#00b050"
+        android:spinnerMode="dropdown"
          />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hey, which company do you work for?"
+        android:text="Hey, which company do you work with?"
         android:id="@+id/textView3"
         android:layout_above="@+id/company_spin"
         android:layout_centerHorizontal="true"
