@@ -18,6 +18,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="#c15555"
+        android:popupBackground="#c15555"
          />
 
     <TextView
