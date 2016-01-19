@@ -44,11 +44,11 @@ public class second extends AppCompatActivity
         TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
 
-        tab1.setIndicator("Tab1");
-        tab1.setContent(new Intent(this, corporateSelect.class));
+        tab2.setIndicator("Corporate");
+        tab2.setContent(new Intent(this, corporateSelect.class));
 
-        tab2.setIndicator("Tab2");
-        tab2.setContent(new Intent(this, publicSelect.class));
+        tab1.setIndicator("Public");
+        tab1.setContent(new Intent(this, publicSelect.class));
 
 
         tabHost.addTab(tab1);

@@ -9,4 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="xyz.wheretopark.tabtest.corporateSelect">
 
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#c15555" />
 </RelativeLayout>

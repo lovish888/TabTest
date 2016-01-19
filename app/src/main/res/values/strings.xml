@@ -6,4 +6,18 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="spinner2">
+    <item>Select Company from below !</item>
+    <item>Kpmg</item>
+    <item>Pwc</item>
+    <item>Fluor</item>
+    <item>Baxter</item>
+    <!--<item>Aircel</item>
+    <item>Ibm</item>
+    <item>Ikea</item>
+    <item>Kcipl</item>
+    <item>Hp</item>
+    <item>Alcatel</item>-->
+    </string-array>
 </resources>
