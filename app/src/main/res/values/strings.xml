@@ -7,7 +7,7 @@
 
 
     <string-array name="company_list">
-        <item>Select Company from below !</item>
+        <item>Select Company</item>
         <item>Kpmg</item>
         <item>Pwc</item>
         <item>Fluor</item>

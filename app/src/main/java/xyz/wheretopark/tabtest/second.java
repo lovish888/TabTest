@@ -17,10 +17,18 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import java.sql.Time;
+import java.util.Date;
+
 public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     /*TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);*/
     private TabHost tabHost;
+    android.text.format.Time time = new android.text.format.Time();
+
+    public int getTime() {
+        return time.HOUR;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,6 @@ public class second extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         LocalActivityManager mLocalActivityManager = new LocalActivityManager(this, false);
@@ -44,10 +51,14 @@ public class second extends AppCompatActivity
         //tabHost.setup();
         TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
-
         tab2.setIndicator("Corporate");
-        tab2.setContent(new Intent(this, corporateSelect.class));
 
+        if(getTime()>= 7 && getTime() <=20) {
+            tab2.setContent(new Intent(this, corporateSelect.class));
+        }
+        else {
+            tab2.setContent(new Intent(this, Message.class));
+        }
         tab1.setIndicator("Public");
         tab1.setContent(new Intent(this, publicSelect.class));
 
