@@ -29,7 +29,7 @@ public class second extends AppCompatActivity
     /*TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);*/
     private TabHost tabHost;
     Calendar c = Calendar.getInstance();
-    int hour = c.get(Calendar.HOUR);
+    int hour = c.get(Calendar.HOUR_OF_DAY);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
