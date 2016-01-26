@@ -53,7 +53,7 @@ public class second extends AppCompatActivity
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
         tab2.setIndicator("Corporate");
 
-        if(hour >= 7 && hour <=17 ) {
+        if(hour >= 7 && hour <16 ) {
 
             tab2.setContent(new Intent(this, corporateSelect.class));
         }
