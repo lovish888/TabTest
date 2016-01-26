@@ -33,10 +33,10 @@ public class corporateSelect extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
+                if (position >= 0) {
                     final ParseQuery<ParseObject> query = ParseQuery.getQuery("Corporate");
                     final String company_name = parent.getItemAtPosition(position).toString();
-                    query.whereEqualTo("company_name", company_name);
+                    query.whereEqualTo("company_name", company_name.toUpperCase());
                     query.getFirstInBackground(new GetCallback<ParseObject>() {
                         public void done(ParseObject object, ParseException e) {
                             if (object != null) {
@@ -48,6 +48,9 @@ public class corporateSelect extends AppCompatActivity {
                             }
                         }
                     });
+                }
+                else if (position == 0){
+                    Toast.makeText(corporateSelect.this, "Select Company", Toast.LENGTH_SHORT).show();
                 }
             }
 

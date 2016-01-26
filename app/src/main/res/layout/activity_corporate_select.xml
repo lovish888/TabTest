@@ -12,7 +12,7 @@
 
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/company_spin"
         android:layout_centerVertical="true"
@@ -20,7 +20,9 @@
         android:background="#00b050"
         android:popupBackground="#00b050"
         android:spinnerMode="dropdown"
-         />
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"

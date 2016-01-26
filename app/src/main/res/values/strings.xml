@@ -7,16 +7,22 @@
 
 
     <string-array name="company_list">
-        <item>Select Company</item>
-        <item>Kpmg</item>
-        <item>Pwc</item>
-        <item>Fluor</item>
-        <item>Baxter</item>
-        <!--<item>Aircel</item>
-    <item>Ibm</item>
-    <item>Ikea</item>
-    <item>Kcipl</item>
-    <item>Hp</item>
-    <item>Alcatel</item>-->
+        <item>SELECT COMPANY</item>
+        <item>ACCENTURE</item>
+        <item>AIRCEL</item>
+        <item>BAXTER</item>
+        <item>BOSTON</item>
+        <item>FLUOR</item>
+        <item>HOME CREDIT</item>
+        <item>HP</item>
+        <item>IBM CNX Tower C</item>
+        <item>IBM I Tower A</item>
+        <item>IBM India Tower B</item>
+        <item>IKEA</item>
+        <item>KCIPL</item>
+        <item>KPMG</item>
+        <item>NOKIA</item>
+        <item>PWC</item>
+        <!--<item>Alcatel</item>-->
     </string-array>
 </resources>
