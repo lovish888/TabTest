@@ -106,6 +106,7 @@ public class second extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_gallery) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
@@ -113,7 +114,14 @@ public class second extends AppCompatActivity
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_manage) {
-            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+
+            // Logging out and Clearing user data.
+            UserLocalStore  userLocalStore;
+            userLocalStore = new UserLocalStore(this);
+            userLocalStore.clearUserData();
+            userLocalStore.setUserLoggedIn(false);
+
+            startActivity(new Intent(second.this,LoginActivity.class));
 
         } else if (id == R.id.nav_share) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();

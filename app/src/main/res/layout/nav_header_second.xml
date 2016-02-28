@@ -26,6 +26,7 @@
         android:textAlignment="textStart"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:gravity="start" />
 
 </LinearLayout>
