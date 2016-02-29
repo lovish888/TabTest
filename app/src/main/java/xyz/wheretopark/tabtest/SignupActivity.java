@@ -23,6 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText mPasswordText;
     Button mSignUpButton;
     TextView mLoginLink;
+    UserLocalStore userLocalStore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class SignupActivity extends AppCompatActivity {
         mPasswordText = (EditText) findViewById(R.id.input_password);
         mSignUpButton = (Button) findViewById(R.id.btn_signup);
         mLoginLink = (TextView) findViewById(R.id.link_login);
+
+        userLocalStore = new UserLocalStore(this);
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +86,11 @@ public class SignupActivity extends AppCompatActivity {
 
         //CREATING NEW USER
 
+        //Storing User data locally on the device.
+        User registeredUser = new User(name,email,password);
+        userLocalStore.storeUserData(registeredUser);
+        mSignUpButton.setEnabled(true);
+
         //Storing User data on Parse.
         ParseUser user = new ParseUser();
         user.setUsername(name);
@@ -98,6 +106,7 @@ public class SignupActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    userLocalStore.setUserLoggedIn(true);
 
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
@@ -114,14 +123,6 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //Storing User data locally on the device.
-        User registeredUser = new User(name,email,password);
-        UserLocalStore userLocalStore = new UserLocalStore(this);
-        userLocalStore.storeUserData(registeredUser);
-        userLocalStore.setUserLoggedIn(true);
-
-        mSignUpButton.setEnabled(true);
     }
 
     public void onSignupFailed() {

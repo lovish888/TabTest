@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(user != null){
                     Intent intent = new Intent(LoginActivity.this, second.class);
                     startActivity(intent);
+                    userLocalSore.setUserLoggedIn(true);
 
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -115,7 +116,6 @@ public class LoginActivity extends AppCompatActivity {
         //Storing User data locally on the device.
         User user = new User(name,password);
         userLocalSore.storeUserData(user);
-        userLocalSore.setUserLoggedIn(true);
 
         mLoginButton.setEnabled(true);
     }
