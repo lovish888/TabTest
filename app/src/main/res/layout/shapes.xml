@@ -5,16 +5,22 @@
     android:layout_width="match_parent">
 
     <solid
-        android:color="#1f4e79" >
+        android:color="#1f4e79"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     </solid>
 
     <stroke
         android:width="2dp"
-        android:color="#C4CDE0" >
+        android:color="#C4CDE0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     </stroke>
 
     <corners
-        android:radius="11dp"   >
+        android:radius="11dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     </corners>
 
 </shape>

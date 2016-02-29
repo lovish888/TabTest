@@ -1,6 +1,8 @@
 package xyz.wheretopark.tabtest;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+import com.parse.ParseException;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -39,7 +45,7 @@ public class SignupActivity extends AppCompatActivity {
         mLoginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignupActivity.this,LoginActivity.class);
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,29 +73,55 @@ public class SignupActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }, 3000);
-
-        Intent intent = new Intent(SignupActivity.this, second.class);
-        startActivity(intent);
     }
 
     public void onSignupSuccess() {
 
-        //Store Data on parse as well as on SharedPreferences.
+        String name = mNameText.getText().toString().trim();
+        String email = mEmailText.getText().toString().trim();
+        String password = mPasswordText.getText().toString().trim();
 
-        mSignUpButton.setEnabled(true);
+        //CREATING NEW USER
 
-        //Storing data on sharedPreferences.
+        //Storing User data on Parse.
+        ParseUser user = new ParseUser();
+        user.setUsername(name);
+        user.setEmail(email);
+        user.setPassword(password);
 
-        String name = mNameText.getText().toString();
-        String email = mEmailText.getText().toString();
-        String password = mPasswordText.getText().toString();
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Intent intent = new Intent(SignupActivity.this, second.class);
+                    //Deleting navigation history to prevent user from going back.
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
 
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                    builder.setMessage(e.getMessage());
+                    builder.setTitle("OOPS!!!");
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+
+        //Storing User data locally on the device.
         User registeredUser = new User(name,email,password);
         UserLocalStore userLocalStore = new UserLocalStore(this);
         userLocalStore.storeUserData(registeredUser);
         userLocalStore.setUserLoggedIn(true);
-        //TODO: Parse Integration.
-        finish();
+
+        mSignUpButton.setEnabled(true);
     }
 
     public void onSignupFailed() {

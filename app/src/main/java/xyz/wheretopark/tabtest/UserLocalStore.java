@@ -14,6 +14,8 @@ public class UserLocalStore {
     public UserLocalStore(Context context){
         userLocalDatabase = context.getSharedPreferences(FileName,0);
         //TODO check why it is done
+        // The value "0" here is used for mode: There are several modes through which wee can
+        //control the access of sharedPreference file like MODE_PRIVATE etc.
     }
 
     public void storeUserData(User user){

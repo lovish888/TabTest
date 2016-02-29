@@ -1,6 +1,8 @@
 package xyz.wheretopark.tabtest;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+
 public class LoginActivity extends AppCompatActivity {
-    EditText mEmailText;
+    EditText mNameText;
     EditText mPasswordText;
     Button mLoginButton;
     TextView mSignUpLink;
@@ -22,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-         mEmailText = (EditText) findViewById(R.id.input_email);
+         mNameText = (EditText) findViewById(R.id.input_name);
          mPasswordText = (EditText) findViewById(R.id.input_password);
          mLoginButton = (Button) findViewById(R.id.btn_login);
          mSignUpLink = (TextView) findViewById(R.id.link_signup);
@@ -69,8 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }, 3000);
-        Intent intent = new Intent(LoginActivity.this, second.class);
-        startActivity(intent);
     }
 
     @Override
@@ -81,11 +85,39 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
 
-        User user = new User(null,null);
+        String name = mNameText.getText().toString().trim();
+        String password = mPasswordText.getText().toString().trim();
+
+        //Checking whether the User exists or not through parse
+        ParseUser.logInInBackground(name, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if(user != null){
+                    Intent intent = new Intent(LoginActivity.this, second.class);
+                    startActivity(intent);
+
+                }else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage(e.getMessage());
+                    builder.setTitle("OOPS!!!");
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+
+        //Storing User data locally on the device.
+        User user = new User(name,password);
         userLocalSore.storeUserData(user);
         userLocalSore.setUserLoggedIn(true);
+
         mLoginButton.setEnabled(true);
-        finish();
     }
 
     public void onLoginFailed() {
@@ -96,14 +128,14 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String email = mEmailText.getText().toString();
+        String name = mNameText.getText().toString();
         String password = mPasswordText.getText().toString();
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            mEmailText.setError("enter a valid email address");
+        if (name.isEmpty() || name.length() < 3) {
+            mNameText.setError("at least 3 characters");
             valid = false;
         } else {
-            mEmailText.setError(null);
+            mNameText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 30) {

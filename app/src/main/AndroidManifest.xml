@@ -2,12 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xyz.wheretopark.tabtest">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/appicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name = "com.parse.APPLICATION_ID"
+            android:value = "nVul6sjXS7F5FfVLOX0o0a1GIkDuCYS1yBzQpVgn" />
+
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value= "SxoJJ4y5vbg53noEtAv0RvFKuujw4OgZSXJsM8ct" />
+
         <activity android:name=".first">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

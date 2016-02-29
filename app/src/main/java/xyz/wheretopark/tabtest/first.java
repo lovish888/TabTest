@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import com.parse.Parse;
+
 public class first extends AppCompatActivity {
     ProgressDialog mProgressDialog;
     UserLocalStore userLocalStore;
@@ -19,6 +21,9 @@ public class first extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
 
         userLocalStore = new UserLocalStore(this);
 
