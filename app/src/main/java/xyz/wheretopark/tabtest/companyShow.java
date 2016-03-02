@@ -32,6 +32,7 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
     String myString;
     private SwipeRefreshLayout swipeRefreshLayout;
     Calendar calendar = Calendar.getInstance();
+
     SimpleDateFormat format;
 
     @Override
@@ -45,7 +46,7 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
         tv1 = (TextView) findViewById(R.id.textView4);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        format = new SimpleDateFormat("dd MMMM yyyy  HH:mm:ss a");
+        format = new SimpleDateFormat("E MMM dd hh:mm:ss a");
 
         parseDataFromParse();
 
