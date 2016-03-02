@@ -67,9 +67,15 @@ public class first extends AppCompatActivity {
         if(isNetworkConnected()){
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 if(currentUser != null){
-                    startActivity(new Intent(first.this, second.class));
+                    Intent i = new Intent(first.this, second.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
                 }else{
-                    startActivity(new Intent(first.this, LoginActivity.class));
+                    Intent i = new Intent(first.this, LoginActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
                 }
             }
         else{

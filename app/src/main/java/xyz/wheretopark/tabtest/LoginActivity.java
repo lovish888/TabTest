@@ -94,6 +94,8 @@ public class LoginActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if(user != null){
                     Intent intent = new Intent(LoginActivity.this, second.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                    //userLocalSore.setUserLoggedIn(true);
 
