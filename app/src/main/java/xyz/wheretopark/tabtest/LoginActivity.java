@@ -17,23 +17,23 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText mNameText;
+    EditText mEmailText;
     EditText mPasswordText;
     Button mLoginButton;
     TextView mSignUpLink;
-    UserLocalStore userLocalSore;
+    //UserLocalStore userLocalSore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-         mNameText = (EditText) findViewById(R.id.input_name);
+        mEmailText = (EditText) findViewById(R.id.input_email);
          mPasswordText = (EditText) findViewById(R.id.input_password);
          mLoginButton = (Button) findViewById(R.id.btn_login);
          mSignUpLink = (TextView) findViewById(R.id.link_signup);
 
-        userLocalSore = new UserLocalStore(this);
+        //userLocalSore = new UserLocalStore(this);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -85,17 +85,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
 
-        String name = mNameText.getText().toString().trim();
+        String email = mEmailText.getText().toString().trim();
         String password = mPasswordText.getText().toString().trim();
 
         //Checking whether the User exists or not through parse
-        ParseUser.logInInBackground(name, password, new LogInCallback() {
+        ParseUser.logInInBackground(email, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(user != null){
                     Intent intent = new Intent(LoginActivity.this, second.class);
                     startActivity(intent);
-                    userLocalSore.setUserLoggedIn(true);
+                   //userLocalSore.setUserLoggedIn(true);
 
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -113,11 +113,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //Storing User data locally on the device.
-        User user = new User(name,password);
+        //Storing User data locally on the device. Maybe needed in future.
+        /*User user = new User(name,password);
         userLocalSore.storeUserData(user);
 
-        mLoginButton.setEnabled(true);
+        mLoginButton.setEnabled(true);*/
     }
 
     public void onLoginFailed() {
@@ -128,14 +128,14 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String name = mNameText.getText().toString();
+        String email = mEmailText.getText().toString();
         String password = mPasswordText.getText().toString();
 
-        if (name.isEmpty() || name.length() < 3) {
-            mNameText.setError("at least 3 characters");
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mEmailText.setError("enter a valid email address");
             valid = false;
         } else {
-            mNameText.setError(null);
+            mEmailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 30) {

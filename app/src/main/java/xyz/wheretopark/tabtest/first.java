@@ -5,17 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
 import com.parse.Parse;
+import com.parse.ParseUser;
 
 public class first extends AppCompatActivity {
     ProgressDialog mProgressDialog;
-    UserLocalStore userLocalStore;
+    //UserLocalStore userLocalStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class first extends AppCompatActivity {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
 
-        userLocalStore = new UserLocalStore(this);
+        //userLocalStore = new UserLocalStore(this);
 
         int DELAY = 1000;
 
@@ -34,8 +34,8 @@ public class first extends AppCompatActivity {
             @Override
             public void run() {
                 onAppStart();
-                Boolean status = userLocalStore.getIfUserLoggedIn();
-                Log.d("check",status.toString());
+               // Boolean status = userLocalStore.getIfUserLoggedIn();
+               // Log.d("check",status.toString());
                  }
         }, DELAY);
     }
@@ -65,19 +65,22 @@ public class first extends AppCompatActivity {
     protected void onAppStart(){
 
         if(isNetworkConnected()){
-            if (authenticate()) {
-                startActivity(new Intent(first.this, second.class));
-            }else{
-                startActivity(new Intent(first.this, LoginActivity.class));
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                if(currentUser != null){
+                    startActivity(new Intent(first.this, second.class));
+                }else{
+                    startActivity(new Intent(first.this, LoginActivity.class));
+                }
             }
-        }
         else{
             // There are no active networks.
             onPreExecute();
         }
     }
 
-    private boolean authenticate(){
+    //Authentication via shared Preference. Maybe needed in future.
+   /* private boolean authenticate(){
         return userLocalStore.getIfUserLoggedIn();
-    }
+
+    }*/
 }

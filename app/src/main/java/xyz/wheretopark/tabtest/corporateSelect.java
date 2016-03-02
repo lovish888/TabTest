@@ -22,8 +22,8 @@ public class corporateSelect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_corporate_select);
 
-        //Parse.enableLocalDatastore(this);
-        //Parse.initialize(this);
+        //
+
 
         Spinner spinner = (Spinner) findViewById(R.id.company_spin);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.company_list, android.R.layout.simple_spinner_dropdown_item);

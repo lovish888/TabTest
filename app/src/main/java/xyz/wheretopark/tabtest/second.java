@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.Toast;
+
+import com.parse.ParseUser;
+
 import java.util.Calendar;
 
 
@@ -51,7 +54,7 @@ public class second extends AppCompatActivity
             tab2.setContent(new Intent(this, corporateSelect.class));
         }
         else {
-            tab2.setContent(new Intent(this, Message.class));
+            tab2.setContent(new Intent(this, corporateSelect.class));
         }
         tab1.setIndicator("Public");
         tab1.setContent(new Intent(this, publicSelect.class));
@@ -108,13 +111,14 @@ public class second extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-            // Logging out and Clearing user data.
-            UserLocalStore  userLocalStore;
+            // Logging out and Clearing user data via shared Preference. Maybe needed in future.
+            /*UserLocalStore  userLocalStore;
             userLocalStore = new UserLocalStore(this);
             userLocalStore.clearUserData();
             userLocalStore.setUserLoggedIn(false);
-
-            startActivity(new Intent(second.this,LoginActivity.class));
+            */
+            ParseUser.logOut();
+            startActivity(new Intent(second.this, LoginActivity.class));
 
         } else if (id == R.id.nav_share) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();

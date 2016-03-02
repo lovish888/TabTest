@@ -23,7 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText mPasswordText;
     Button mSignUpButton;
     TextView mLoginLink;
-    UserLocalStore userLocalStore;
+    //UserLocalStore userLocalStore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class SignupActivity extends AppCompatActivity {
         mSignUpButton = (Button) findViewById(R.id.btn_signup);
         mLoginLink = (TextView) findViewById(R.id.link_login);
 
-        userLocalStore = new UserLocalStore(this);
+        //userLocalStore = new UserLocalStore(this);
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,16 +86,19 @@ public class SignupActivity extends AppCompatActivity {
 
         //CREATING NEW USER
 
-        //Storing User data locally on the device.
-        User registeredUser = new User(name,email,password);
+        //Storing User data locally on the device. Maybe needed in future.
+
+       /* User registeredUser = new User(name,email,password);
         userLocalStore.storeUserData(registeredUser);
-        mSignUpButton.setEnabled(true);
+        mSignUpButton.setEnabled(true);*/
 
         //Storing User data on Parse.
+
         ParseUser user = new ParseUser();
-        user.setUsername(name);
+        user.setUsername(email);
         user.setEmail(email);
         user.setPassword(password);
+        user.put("Name",name);
 
         user.signUpInBackground(new SignUpCallback() {
             @Override
@@ -106,7 +109,7 @@ public class SignupActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                    userLocalStore.setUserLoggedIn(true);
+                    //userLocalStore.setUserLoggedIn(true);
 
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);

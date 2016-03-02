@@ -14,7 +14,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class companyShow extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
@@ -25,10 +27,12 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
     static ListView lv2;
     String[] park_name;
     String[] park_status;
-    String delete;
-    String d;
+    //String delete;
+    //String d;
     String myString;
     private SwipeRefreshLayout swipeRefreshLayout;
+    Calendar calendar = Calendar.getInstance();
+    SimpleDateFormat format;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
         tv1 = (TextView) findViewById(R.id.textView4);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
+        format = new SimpleDateFormat("dd MMMM yyyy  HH:mm:ss a");
 
         parseDataFromParse();
 
@@ -53,9 +58,14 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
             public void done(ParseObject object, ParseException e) {
                 if (object != null) {
                     tv.setText(object.getString("company_name"));
-                    d = object.getUpdatedAt().toString().substring(20);
-                    delete = object.getUpdatedAt().toString().replace(d, "");
-                    tv1.setText("Last Updated: " + delete);
+
+                    //d = object.getUpdatedAt().toString().substring(20);
+                    //delete = object.getUpdatedAt().toString().replace(d, "");
+                    //tv1.setText("Last Updated: " + delete);
+
+                    String time = String.format("Last Updated-> " + format.format(calendar.getTime()));
+                    tv1.setText(time);
+
                     ArrayList<String> parking_name = (ArrayList<String>) object.get("parking_name");
                     ArrayList<String> park_show_status = (ArrayList<String>) object.get("park_show_status");
                     park_name = parking_name.toArray(new String[parking_name.size()]);
