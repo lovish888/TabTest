@@ -64,7 +64,7 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
                     //delete = object.getUpdatedAt().toString().replace(d, "");
                     //tv1.setText("Last Updated: " + delete);
 
-                    String time = String.format("Last Updated-> " + format.format(calendar.getTime()));
+                    String time = String.format("Last Updated: " + format.format(calendar.getTime()));
                     tv1.setText(time);
 
                     ArrayList<String> parking_name = (ArrayList<String>) object.get("parking_name");
