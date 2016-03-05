@@ -4,6 +4,11 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_text">Login</string>
+    <string name="forget_password_text">Forgot Password?</string>
+    <string name="signup_long_text">No account yet? Create one</string>
 
     <string-array name="company_list">
         <item>SELECT COMPANY</item>

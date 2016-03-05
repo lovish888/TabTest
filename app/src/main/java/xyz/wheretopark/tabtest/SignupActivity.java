@@ -21,6 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText mNameText;
     EditText mEmailText;
     EditText mPasswordText;
+    EditText mRePasswordText;
     Button mSignUpButton;
     TextView mLoginLink;
     //UserLocalStore userLocalStore;
@@ -33,6 +34,7 @@ public class SignupActivity extends AppCompatActivity {
         mNameText = (EditText) findViewById(R.id.input_name);
         mEmailText = (EditText) findViewById(R.id.input_email);
         mPasswordText = (EditText) findViewById(R.id.input_password);
+        mRePasswordText = (EditText) findViewById(R.id.input_repassword);
         mSignUpButton = (Button) findViewById(R.id.btn_signup);
         mLoginLink = (TextView) findViewById(R.id.link_login);
 
@@ -139,6 +141,7 @@ public class SignupActivity extends AppCompatActivity {
         String name = mNameText.getText().toString();
         String email = mEmailText.getText().toString();
         String password = mPasswordText.getText().toString();
+        String repassword = mRePasswordText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
             mNameText.setError("at least 3 characters");
@@ -159,6 +162,11 @@ public class SignupActivity extends AppCompatActivity {
             valid = false;
         } else {
             mPasswordText.setError(null);
+        }
+        if(repassword == password){
+            mPasswordText.setError(null);
+        }else{
+            mRePasswordText.setText("Password didn't match");
         }
 
         return valid;

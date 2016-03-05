@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mPasswordText;
     Button mLoginButton;
     TextView mSignUpLink;
+    //TextView mForgotPassword;
     //UserLocalStore userLocalSore;
 
     @Override
@@ -28,10 +29,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmailText = (EditText) findViewById(R.id.input_email);
+         mEmailText = (EditText) findViewById(R.id.input_email);
          mPasswordText = (EditText) findViewById(R.id.input_password);
          mLoginButton = (Button) findViewById(R.id.btn_login);
          mSignUpLink = (TextView) findViewById(R.id.link_signup);
+         //mForgotPassword = (TextView) findViewById(R.id.forget_password);
 
         //userLocalSore = new UserLocalStore(this);
 
@@ -51,6 +53,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /*mForgotPassword.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //TODO : Reset Password.
+            }
+        });*/
     }
 
     public void login() {
