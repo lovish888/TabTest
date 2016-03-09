@@ -1,7 +1,9 @@
 package xyz.wheretopark.tabtest;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -9,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-
 import com.parse.Parse;
 import com.parse.ParseUser;
 
@@ -21,9 +22,6 @@ public class first extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
 
         //userLocalStore = new UserLocalStore(this);
 
@@ -43,9 +41,26 @@ public class first extends AppCompatActivity {
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
         if (networkInfo == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(first.this);
+                builder.setMessage("Sorry no Internet connectivity detected. Please reconnect and try again.");
+                builder.setTitle("No Internet Connection");
+                builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Log.d("Filter","0");
+                        isNetworkConnected();
+                    }
+                });
+            //Log.d("Filter","1");
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            //Log.d("Filter", "2");
             return false;
         } else {
+            //Log.d("Filter","3");
+
             return true;
         }
     }
@@ -67,11 +82,15 @@ public class first extends AppCompatActivity {
         if(isNetworkConnected()){
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 if(currentUser != null){
+                   // Log.d("Filter","4");
+
                     Intent i = new Intent(first.this, second.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
                 }else{
+                   // Log.d("Filter","5");
+
                     Intent i = new Intent(first.this, LoginActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -83,7 +102,6 @@ public class first extends AppCompatActivity {
             onPreExecute();
         }
     }
-
     //Authentication via shared Preference. Maybe needed in future.
    /* private boolean authenticate(){
         return userLocalStore.getIfUserLoggedIn();

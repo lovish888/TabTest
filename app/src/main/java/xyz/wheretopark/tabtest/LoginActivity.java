@@ -15,13 +15,14 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mEmailText;
     EditText mPasswordText;
     Button mLoginButton;
     TextView mSignUpLink;
-    //TextView mForgotPassword;
+    TextView mForgotPassword;
     //UserLocalStore userLocalSore;
 
     @Override
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
          mPasswordText = (EditText) findViewById(R.id.input_password);
          mLoginButton = (Button) findViewById(R.id.btn_login);
          mSignUpLink = (TextView) findViewById(R.id.link_signup);
-         //mForgotPassword = (TextView) findViewById(R.id.forget_password);
+         mForgotPassword = (TextView) findViewById(R.id.forget_password);
 
         //userLocalSore = new UserLocalStore(this);
 
@@ -54,13 +55,44 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        /*mForgotPassword.setOnClickListener(new View.OnClickListener() {
+        //Resetting the password through Email.
+        mForgotPassword.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                //TODO : Reset Password.
+
+                ParseUser.requestPasswordResetInBackground(mEmailText.getText().toString().trim(), new RequestPasswordResetCallback() {
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            // An email was successfully sent with reset instructions.
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                            builder.setMessage("Password Reset Link has been sent to your Email.");
+                            builder.setTitle("Success");
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                            builder.setMessage(e.getMessage());
+                            builder.setTitle("Sorry");
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    }
+                });
             }
-        });*/
+        });
     }
 
     public void login() {
