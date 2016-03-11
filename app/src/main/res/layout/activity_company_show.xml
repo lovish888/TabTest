@@ -15,13 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
         <TextView
             android:id="@+id/company_name"
             android:layout_width="350dp"
@@ -42,32 +35,7 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/company_name"
-            android:layout_marginTop="0dp"
-            android:layout_toLeftOf="@+id/imageView3"
-            android:layout_toStartOf="@+id/imageView3"
-            android:background="#e2dada"
-            android:choiceMode="singleChoice"
-            tools:listitem="@android:layout/simple_list_item_1" />
 
-        <ListView
-            android:id="@+id/listView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/listView"
-            android:layout_toEndOf="@+id/imageView3"
-            android:layout_toRightOf="@+id/imageView3"
-            android:background="#e2dada"
-            android:choiceMode="singleChoice"
-            tools:listitem="@android:layout/simple_list_item_1" />
 
         <TextView
             android:id="@+id/textView4"
@@ -78,6 +46,15 @@
             android:textAlignment="center"
             android:textColor="#020202"
             android:textSize="12sp" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layout_below="@+id/company_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
 
     </RelativeLayout>
 

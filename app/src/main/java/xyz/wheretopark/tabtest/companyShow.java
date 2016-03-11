@@ -1,10 +1,16 @@
 package xyz.wheretopark.tabtest;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,16 +29,12 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
 
     static TextView tv;
     static TextView tv1;
-    static ListView lv1;
-    static ListView lv2;
+    static ListView listView;
     String[] park_name;
     String[] park_status;
-    //String delete;
-    //String d;
     String myString;
     private SwipeRefreshLayout swipeRefreshLayout;
     Calendar calendar = Calendar.getInstance();
-
     SimpleDateFormat format;
 
     @Override
@@ -60,10 +62,6 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
                 if (object != null) {
                     tv.setText(object.getString("company_name"));
 
-                    //d = object.getUpdatedAt().toString().substring(20);
-                    //delete = object.getUpdatedAt().toString().replace(d, "");
-                    //tv1.setText("Last Updated: " + delete);
-
                     String time = String.format("Last Updated: " + format.format(calendar.getTime()));
                     tv1.setText(time);
 
@@ -79,17 +77,41 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
 
     void create(String[] park_name, String[] park_status) {
 
-        lv1 = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> ad = new ArrayAdapter<String>(this, R.layout.item_layout, park_name);
-        lv1.setAdapter(ad);
-        lv2 = (ListView) findViewById(R.id.listView2);
-        ArrayAdapter<String> ad2 = new ArrayAdapter<String>(this, R.layout.item_layout, park_status);
-        lv2.setAdapter(ad2);
+        listView = (ListView) findViewById(R.id.listView);
+        myAdapter adapter = new myAdapter(this,park_name,park_status);
+        listView.setAdapter(adapter);
+
         Toast.makeText(companyShow.this, "You may need to wait as some of the tokens for these slots might be at the exit points.", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onRefresh() {
         parseDataFromParse();
+    }
+}
+
+class myAdapter extends ArrayAdapter<String>{
+    Context context;
+    String[] park_name;
+    String[] park_status;
+
+    myAdapter(Context context, String[] park_name, String[] park_status){
+        super(context,R.layout.item_layout,R.id.textView5,park_name);
+        this.context = context;
+        this.park_name = park_name;
+        this.park_status = park_status;
+
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View row = inflater.inflate(R.layout.item_layout,parent,false);
+
+        TextView tv1 = (TextView) row.findViewById(R.id.textView5);
+        TextView tv2 = (TextView) row.findViewById(R.id.textView6);
+        tv1.setText(park_name[position]);
+        tv2.setText(park_status[position]);
+        return row;
     }
 }

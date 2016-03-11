@@ -53,14 +53,10 @@ public class first extends AppCompatActivity {
                         isNetworkConnected();
                     }
                 });
-            //Log.d("Filter","1");
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            //Log.d("Filter", "2");
             return false;
         } else {
-            //Log.d("Filter","3");
-
             return true;
         }
     }
@@ -82,14 +78,12 @@ public class first extends AppCompatActivity {
         if(isNetworkConnected()){
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 if(currentUser != null){
-                   // Log.d("Filter","4");
 
                     Intent i = new Intent(first.this, second.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
                 }else{
-                   // Log.d("Filter","5");
 
                     Intent i = new Intent(first.this, LoginActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

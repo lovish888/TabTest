@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
+import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mEmailText;
     EditText mPasswordText;
     Button mLoginButton;
+    Button mSkipButton;
     TextView mSignUpLink;
     TextView mForgotPassword;
     //UserLocalStore userLocalSore;
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
          mEmailText = (EditText) findViewById(R.id.input_email);
          mPasswordText = (EditText) findViewById(R.id.input_password);
          mLoginButton = (Button) findViewById(R.id.btn_login);
+         mSkipButton = (Button) findViewById(R.id.btn_skip);
          mSignUpLink = (TextView) findViewById(R.id.link_signup);
          mForgotPassword = (TextView) findViewById(R.id.forget_password);
 
@@ -52,6 +55,32 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        mSkipButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ParseAnonymousUtils.logIn(new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if (e != null) {
+                            startActivity(new Intent(LoginActivity.this,second.class));
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                            builder.setMessage(e.getMessage());
+                            builder.setTitle("Sorry");
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    }
+                });
             }
         });
 
