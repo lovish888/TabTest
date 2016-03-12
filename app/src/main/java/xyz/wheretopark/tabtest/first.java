@@ -49,7 +49,6 @@ public class first extends AppCompatActivity {
                 builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Log.d("Filter","0");
                         isNetworkConnected();
                     }
                 });
@@ -61,7 +60,7 @@ public class first extends AppCompatActivity {
         }
     }
 
-    protected void onPreExecute() {
+    /*protected void onPreExecute() {
         // Create a progressdialog
         mProgressDialog = new ProgressDialog(first.this);
         // Set progressdialog title
@@ -71,7 +70,7 @@ public class first extends AppCompatActivity {
         mProgressDialog.setIndeterminate(false);
         // Show progressdialog
         mProgressDialog.show();
-    }
+    }*/
 
     protected void onAppStart(){
 
@@ -91,10 +90,10 @@ public class first extends AppCompatActivity {
                     startActivity(i);
                 }
             }
-        else{
+        /*else{
             // There are no active networks.
             onPreExecute();
-        }
+        }*/
     }
     //Authentication via shared Preference. Maybe needed in future.
    /* private boolean authenticate(){

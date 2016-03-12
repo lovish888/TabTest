@@ -84,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        
+
         //Resetting the password through Email.
         mForgotPassword.setOnClickListener(new View.OnClickListener() {
 

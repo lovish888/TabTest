@@ -1,7 +1,10 @@
 package xyz.wheretopark.tabtest;
 
+import android.app.AlertDialog;
 import android.app.LocalActivityManager;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import java.lang.*;
 
@@ -14,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebMessage;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -57,6 +61,17 @@ public class second extends AppCompatActivity
         }
         else {
             tab2.setContent(new Intent(this, corporateSelect.class));
+            AlertDialog.Builder builder = new AlertDialog.Builder(second.this);
+            builder.setMessage("Please note that currently we operate from Monday to Friday 7:00pm to 4:00pm IST. We thank you for visiting us.");
+            builder.setTitle("Sorry Off-time!");
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         tab1.setIndicator("Public");
         tab1.setContent(new Intent(this, publicSelect.class));
@@ -126,7 +141,9 @@ public class second extends AppCompatActivity
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_slideshow) {
-            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+            Intent market = new Intent(Intent.ACTION_VIEW);
+            market.setData(Uri.parse("market://details?id=xyz.wheretopark.tabtest&hl=en"));
+            startActivity(Intent.createChooser(market,"Launch Market"));
 
         } else if (id == R.id.nav_manage) {
 
@@ -140,10 +157,23 @@ public class second extends AppCompatActivity
             startActivity(new Intent(second.this, LoginActivity.class));
 
         } else if (id == R.id.nav_share) {
-            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "I am using this awesome android app.";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody +"\nDownload: https://play.google.com/store/apps/details?id=xyz.wheretopark.tabtest&hl=en");
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
 
         } else if (id == R.id.nav_send) {
-            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+            Intent contact = new Intent(Intent.ACTION_SEND);
+            contact.setData(Uri.parse("mailto:"));
+            String[] to = {"wheretopark@gmail.com"};
+            contact.putExtra(Intent.EXTRA_EMAIL, to);
+
+            // Name of specification for email.
+            contact.setType("message/rfc822"); //To handle the putExtra methods. MIME type of the email. App will crash otherwise.
+            startActivity(Intent.createChooser(contact, "Send Email"));
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
