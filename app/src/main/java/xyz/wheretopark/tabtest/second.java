@@ -1,13 +1,10 @@
 package xyz.wheretopark.tabtest;
 
-import android.app.AlertDialog;
 import android.app.LocalActivityManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import java.lang.*;
-
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,9 +19,6 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 
-import java.util.Calendar;
-
-
 public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,6 +31,7 @@ public class second extends AppCompatActivity
         setContentView(R.layout.activity_second);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabHost = (TabHost)findViewById(R.id.tabhost);
+
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -48,49 +43,16 @@ public class second extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         LocalActivityManager mLocalActivityManager = new LocalActivityManager(this, false);
         mLocalActivityManager.dispatchCreate(savedInstanceState); // state will be bundle your activity state which you get in onCreate
+
         tabHost.setup(mLocalActivityManager);
 
-        final TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
-        final TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
-        tab2.setIndicator("Corporate");
+        TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
+        TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
+
+        tab2.setIndicator("Corporate");//Name of the Tab.
         tab2.setContent(new Intent(this, corporateSelect.class));
         tab1.setIndicator("Public");
         tab1.setContent(new Intent(this, publicSelect.class));
-
-        /*tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-
-            public void onTabChanged(String tabId) {
-
-                switch (tabHost.getCurrentTab()) {
-                    case 0:
-                        //do what you want when tab 0 is selected
-                        break;
-
-                    case 1:
-                        first temp = new first();
-                        if((hour >= 7 && hour <16)&& temp.offTimeCheck) {
-                            temp.offTimeCheck = false;
-                            AlertDialog.Builder builder = new AlertDialog.Builder(second.this);
-                            builder.setMessage("Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.");
-                            builder.setTitle("Sorry Off-time!");
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
-                        }
-                        break;
-
-                    default:
-
-                        break;
-                }
-            }
-        });*/
-
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
@@ -138,8 +100,6 @@ public class second extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -169,8 +129,8 @@ public class second extends AppCompatActivity
             userLocalStore.clearUserData();
             userLocalStore.setUserLoggedIn(false);
             */
-            //ParseUser.logOut();
-            //startActivity(new Intent(second.this, LoginActivity.class));
+            ParseUser.logOut();
+            startActivity(new Intent(second.this, LoginActivity.class));
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_share) {
@@ -197,4 +157,5 @@ public class second extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

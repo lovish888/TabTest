@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="xyz.wheretopark.tabtest.AnonymousLogin"
+    android:background="#1f4e79">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:id="@+id/editText"></android.support.design.widget.TextInputLayout>
+
+    <EditText android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:hint="Username"
+        android:textSize="20sp"
+        android:layout_below="@+id/anonymousLoginText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/anonymous_login_text"
+        android:id="@+id/anonymousLoginText"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="143dp"
+        android:textSize="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lets Go"
+        android:id="@+id/letsGo"
+        android:layout_below="@+id/input_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:background="@layout/shapes"
+        android:textSize="18sp"
+        android:onClick="onClick" />
+</RelativeLayout>

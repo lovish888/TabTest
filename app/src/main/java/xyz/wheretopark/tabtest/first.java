@@ -75,7 +75,7 @@ public class first extends AppCompatActivity {
     protected void onAppStart(){
 
         if(isNetworkConnected()){
-                /*ParseUser currentUser = ParseUser.getCurrentUser();
+                ParseUser currentUser = ParseUser.getCurrentUser();
                 if(currentUser != null){
 
                     Intent i = new Intent(first.this, second.class);
@@ -88,13 +88,13 @@ public class first extends AppCompatActivity {
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
-                }*/
+                }
 
-            //Will be changed in future
+            /*//Will be changed in future
                 Intent i = new Intent(first.this, second.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
+                startActivity(i);*/
             }
         /*else{
             // There are no active networks.

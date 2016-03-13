@@ -62,39 +62,13 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-
-                ParseAnonymousUtils.logIn(new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException e) {
-                        if (e != null) {
-                            startActivity(new Intent(LoginActivity.this, second.class));
-                        } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                            builder.setMessage(e.getMessage());
-                            builder.setTitle("Sorry");
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
-                        }
-                    }
-                });
-
+                startActivity(new Intent(LoginActivity.this,AnonymousLogin.class));
         }
-    }
-
-    );
-
+    });
 
     //Resetting the password through Email.
     mForgotPassword.setOnClickListener(new View.OnClickListener()
-
     {
-
         @Override
         public void onClick (View v){
 

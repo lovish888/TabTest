@@ -7,9 +7,11 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_text">Login</string>
+    <string name="anonymous_login_text">Choose your one time Username:</string>
     <string name="forget_password_text">Forgot Password?</string>
     <string name="signup_long_text">No account yet? Create one</string>
     <string name="off_time">Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.</string>
+
 
     <string-array name="company_list">
         <item>SELECT COMPANY</item>
