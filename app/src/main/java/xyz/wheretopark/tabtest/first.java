@@ -10,9 +10,9 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import com.parse.Parse;
 import com.parse.ParseUser;
+
+import java.util.Calendar;
 
 public class first extends AppCompatActivity {
     ProgressDialog mProgressDialog;
@@ -25,7 +25,7 @@ public class first extends AppCompatActivity {
 
         //userLocalStore = new UserLocalStore(this);
 
-        int DELAY = 1000;
+        int DELAY = 2500;
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -75,7 +75,7 @@ public class first extends AppCompatActivity {
     protected void onAppStart(){
 
         if(isNetworkConnected()){
-                ParseUser currentUser = ParseUser.getCurrentUser();
+                /*ParseUser currentUser = ParseUser.getCurrentUser();
                 if(currentUser != null){
 
                     Intent i = new Intent(first.this, second.class);
@@ -88,7 +88,13 @@ public class first extends AppCompatActivity {
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
-                }
+                }*/
+
+            //Will be changed in future
+                Intent i = new Intent(first.this, second.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
             }
         /*else{
             // There are no active networks.

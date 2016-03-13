@@ -59,13 +59,15 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         mSkipButton.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v){
+
                 ParseAnonymousUtils.logIn(new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (e != null) {
-                            startActivity(new Intent(LoginActivity.this,second.class));
+                            startActivity(new Intent(LoginActivity.this, second.class));
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                             builder.setMessage(e.getMessage());
@@ -81,28 +83,32 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-            }
-        });
 
-        
+        }
+    }
 
-        //Resetting the password through Email.
-        mForgotPassword.setOnClickListener(new View.OnClickListener() {
+    );
 
-            @Override
-            public void onClick(View v) {
 
-                ParseUser.requestPasswordResetInBackground(mEmailText.getText().toString().trim(), new RequestPasswordResetCallback() {
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            // An email was successfully sent with reset instructions.
-                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                            builder.setMessage("Password Reset Link has been sent to your Email.");
-                            builder.setTitle("Success");
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
+    //Resetting the password through Email.
+    mForgotPassword.setOnClickListener(new View.OnClickListener()
+
+    {
+
+        @Override
+        public void onClick (View v){
+
+        ParseUser.requestPasswordResetInBackground(mEmailText.getText().toString().trim(), new RequestPasswordResetCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    // An email was successfully sent with reset instructions.
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage("Password Reset Link has been sent to your Email.");
+                    builder.setTitle("Success");
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
                                 }
                             });
                             AlertDialog dialog = builder.create();

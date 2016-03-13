@@ -9,17 +9,18 @@
     <string name="login_text">Login</string>
     <string name="forget_password_text">Forgot Password?</string>
     <string name="signup_long_text">No account yet? Create one</string>
+    <string name="off_time">Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.</string>
 
     <string-array name="company_list">
         <item>SELECT COMPANY</item>
-        <item>ACCENTURE</item>
+        <!--item>ACCENTURE</item-->
         <item>AIRCEL</item>
         <item>BAXTER</item>
-        <item>BOSTON</item>
+        <!--item>BOSTON</item-->
         <item>FLUOR</item>
         <item>HOME CREDIT</item>
         <item>HP</item>
-        <item>IBM CNX Tower C</item>
+        <!--item>IBM CNX Tower C</item-->
         <item>IBM I Tower A</item>
         <item>IBM India Tower B</item>
         <item>IKEA</item>

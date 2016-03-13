@@ -35,7 +35,8 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
     String myString;
     private SwipeRefreshLayout swipeRefreshLayout;
     Calendar calendar = Calendar.getInstance();
-    SimpleDateFormat format;
+    int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    SimpleDateFormat format,format1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
         format = new SimpleDateFormat("E MMM dd hh:mm:ss a");
-
+        format1 = new SimpleDateFormat("E MMM dd ");
         parseDataFromParse();
 
     }
@@ -61,10 +62,13 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
             public void done(ParseObject object, ParseException e) {
                 if (object != null) {
                     tv.setText(object.getString("company_name"));
-
+                if(hour>=7 && hour<16) {
                     String time = String.format("Last Updated: " + format.format(calendar.getTime()));
                     tv1.setText(time);
-
+                }else{
+                    String timeOver = String.format("Last Updated: " + format1.format(calendar.getTime()) + "04:00:00 PM");
+                    tv1.setText(timeOver);
+                }
                     ArrayList<String> parking_name = (ArrayList<String>) object.get("parking_name");
                     ArrayList<String> park_show_status = (ArrayList<String>) object.get("park_show_status");
                     park_name = parking_name.toArray(new String[parking_name.size()]);

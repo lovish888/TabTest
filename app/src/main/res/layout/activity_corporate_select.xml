@@ -8,31 +8,47 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="xyz.wheretopark.tabtest.corporateSelect"
-    android:background="#e2dada">
+    android:background="#ffffff">
 
 
     <Spinner
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/company_spin"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:background="#00b050"
         android:popupBackground="#00b050"
         android:spinnerMode="dropdown"
         android:textSize="16sp"
         android:layout_gravity="center"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hey, which company do you work with?"
         android:id="@+id/textView3"
-        android:layout_above="@+id/company_spin"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="69dp"
-        android:textColor="#5c3a3a"
-        android:textSize="30sp"
-        android:textAlignment="center" />
+        android:textStyle="italic"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView9"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/off_time"
+        android:textColor="#000000"
+        android:background="#f2c3c3"
+        android:textSize="15dp"
+        android:textStyle="italic" />
 </RelativeLayout>

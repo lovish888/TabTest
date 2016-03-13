@@ -17,7 +17,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebMessage;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -28,10 +27,10 @@ import java.util.Calendar;
 
 public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    /*TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);*/
+
     private TabHost tabHost;
-    Calendar c = Calendar.getInstance();
-    int hour = c.get(Calendar.HOUR_OF_DAY);
+    //Calendar c = Calendar.getInstance();
+    //int hour = c.get(Calendar.HOUR_OF_DAY);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,31 +49,47 @@ public class second extends AppCompatActivity
         LocalActivityManager mLocalActivityManager = new LocalActivityManager(this, false);
         mLocalActivityManager.dispatchCreate(savedInstanceState); // state will be bundle your activity state which you get in onCreate
         tabHost.setup(mLocalActivityManager);
-        //tabHost.setup();
-        TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
-        TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
+
+        final TabHost.TabSpec tab1 = tabHost.newTabSpec("First Tab");
+        final TabHost.TabSpec tab2 = tabHost.newTabSpec("Second Tab");
         tab2.setIndicator("Corporate");
-
-        if(hour >= 7 && hour <16 ) {
-
-            tab2.setContent(new Intent(this, corporateSelect.class));
-        }
-        else {
-            tab2.setContent(new Intent(this, corporateSelect.class));
-            AlertDialog.Builder builder = new AlertDialog.Builder(second.this);
-            builder.setMessage("Please note that currently we operate from Monday to Friday 7:00pm to 4:00pm IST. We thank you for visiting us.");
-            builder.setTitle("Sorry Off-time!");
-            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        }
+        tab2.setContent(new Intent(this, corporateSelect.class));
         tab1.setIndicator("Public");
         tab1.setContent(new Intent(this, publicSelect.class));
+
+        /*tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+
+            public void onTabChanged(String tabId) {
+
+                switch (tabHost.getCurrentTab()) {
+                    case 0:
+                        //do what you want when tab 0 is selected
+                        break;
+
+                    case 1:
+                        first temp = new first();
+                        if((hour >= 7 && hour <16)&& temp.offTimeCheck) {
+                            temp.offTimeCheck = false;
+                            AlertDialog.Builder builder = new AlertDialog.Builder(second.this);
+                            builder.setMessage("Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.");
+                            builder.setTitle("Sorry Off-time!");
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                        break;
+
+                    default:
+
+                        break;
+                }
+            }
+        });*/
 
 
         tabHost.addTab(tab1);
@@ -136,6 +151,7 @@ public class second extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+            //startActivity(new Intent(second.this,MyProfile.class));
 
         } else if (id == R.id.nav_gallery) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
@@ -153,8 +169,9 @@ public class second extends AppCompatActivity
             userLocalStore.clearUserData();
             userLocalStore.setUserLoggedIn(false);
             */
-            ParseUser.logOut();
-            startActivity(new Intent(second.this, LoginActivity.class));
+            //ParseUser.logOut();
+            //startActivity(new Intent(second.this, LoginActivity.class));
+            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -167,7 +184,7 @@ public class second extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             Intent contact = new Intent(Intent.ACTION_SEND);
             contact.setData(Uri.parse("mailto:"));
-            String[] to = {"wheretopark@gmail.com"};
+            String[] to = {"hello@wheretopark.xyz"};
             contact.putExtra(Intent.EXTRA_EMAIL, to);
 
             // Name of specification for email.

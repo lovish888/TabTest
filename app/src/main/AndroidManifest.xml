@@ -40,7 +40,7 @@
         <activity
             android:name=".SignupActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".AnonymousLogin"></activity>
+        <activity android:name=".AnonymousLogin" />
     </application>
 
 </manifest>
