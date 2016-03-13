@@ -131,7 +131,7 @@ public class second extends AppCompatActivity
             */
             ParseUser.logOut();
             startActivity(new Intent(second.this, LoginActivity.class));
-            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

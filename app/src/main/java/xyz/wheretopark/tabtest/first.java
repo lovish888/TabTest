@@ -60,18 +60,6 @@ public class first extends AppCompatActivity {
         }
     }
 
-    /*protected void onPreExecute() {
-        // Create a progressdialog
-        mProgressDialog = new ProgressDialog(first.this);
-        // Set progressdialog title
-        mProgressDialog.setTitle("Loading");
-        // Set progressdialog message
-        mProgressDialog.setMessage("No Internet...");
-        mProgressDialog.setIndeterminate(false);
-        // Show progressdialog
-        mProgressDialog.show();
-    }*/
-
     protected void onAppStart(){
 
         if(isNetworkConnected()){
@@ -89,21 +77,15 @@ public class first extends AppCompatActivity {
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
                 }
-
-            /*//Will be changed in future
-                Intent i = new Intent(first.this, second.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);*/
             }
-        /*else{
-            // There are no active networks.
-            onPreExecute();
-        }*/
     }
     //Authentication via shared Preference. Maybe needed in future.
    /* private boolean authenticate(){
         return userLocalStore.getIfUserLoggedIn();
 
     }*/
+    @Override
+    public void onBackPressed() {
+        System.exit(0);
+    }
 }
