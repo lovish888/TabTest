@@ -46,7 +46,7 @@ public class corporateSelect extends AppCompatActivity {
                         }
                     });
                 }
-                else if (position == 0){
+                else if (position == 0) {
                     Toast.makeText(corporateSelect.this, "Select Company", Toast.LENGTH_SHORT).show();
                 }
             }

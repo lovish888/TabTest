@@ -7,69 +7,51 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 public class publicSelect extends AppCompatActivity {
-    private GestureDetector gestureDetector;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_select);
-        Button b2 = (Button) findViewById(R.id.button);
-        gestureDetector = new GestureDetector(new SwipeGestureDetector());
 
-        b2.setOnClickListener(new View.OnClickListener() {
+        Spinner spinner = (Spinner) findViewById(R.id.cyberhub_spin);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cyberhub_parking_select, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position >= 0) {
+                    final ParseQuery<ParseObject> query = ParseQuery.getQuery("Public");
+                    final String parking_name = parent.getItemAtPosition(position).toString();
+                    query.whereEqualTo("parking_name", parking_name.toUpperCase());
+                    query.getFirstInBackground(new GetCallback<ParseObject>() {
+                        public void done(ParseObject object, ParseException e) {
+                            if (object == null) {
+                               // Bundle bundle = new Bundle();
+                               // bundle.putString("Name", object.getObjectId()); //This is for a String
+                                Intent i = new Intent(publicSelect.this, CyberHubParking.class);
+                               // i.putExtras(bundle);
+                                startActivity(i);
+                            }
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-                Toast.makeText(publicSelect.this, "Coming Soon", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (gestureDetector.onTouchEvent(event)) {
-            return true;
-        }
-        return super.onTouchEvent(event);
-    }
-
-    private void onLeftSwipe() {
-        Intent a = new Intent(this, corporateSelect.class);
-        startActivity(a);
-        overridePendingTransition(R.anim.left_in, R.anim.left_out);
-    }
-
-    // Private class for gestures
-    private class SwipeGestureDetector
-            extends GestureDetector.SimpleOnGestureListener {
-        // Swipe properties, you can change it to make the swipe
-        // longer or shorter and speed
-        private static final int SWIPE_MIN_DISTANCE = 80;
-        private static final int SWIPE_MAX_OFF_PATH = 200;
-        private static final int SWIPE_THRESHOLD_VELOCITY = 120;
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2,
-                               float velocityX, float velocityY) {
-            try {
-                float diffAbs = Math.abs(e1.getY() - e2.getY());
-                float diff = e1.getX() - e2.getX();
-
-                if (diffAbs > SWIPE_MAX_OFF_PATH)
-                    return false;
-
-                // Left swipe
-                if (diff > SWIPE_MIN_DISTANCE
-                        && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                    publicSelect.this.onLeftSwipe();
-                }
-            } catch (Exception e) {
-                Log.e("Filter", "Error on gestures");
-            }
-            return false;
-        }
     }
 }

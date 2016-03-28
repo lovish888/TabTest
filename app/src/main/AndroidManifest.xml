@@ -41,6 +41,7 @@
             android:name=".SignupActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".AnonymousLogin" />
+        <activity android:name=".CyberHubParking"/>
     </application>
 
 </manifest>

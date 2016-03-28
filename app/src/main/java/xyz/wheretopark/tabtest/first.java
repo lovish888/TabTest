@@ -10,6 +10,8 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
 import com.parse.ParseUser;
 
 import java.util.Calendar;
@@ -86,6 +88,7 @@ public class first extends AppCompatActivity {
     }*/
     @Override
     public void onBackPressed() {
+        Log.d("Filter", "here");
         System.exit(0);
     }
 }

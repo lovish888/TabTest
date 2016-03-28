@@ -55,9 +55,9 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
 
     }
 
-    public void parseDataFromParse() {
-        final ParseQuery<ParseObject> query = ParseQuery.getQuery("Corporate");
+    public void parseDataFromParse() {final ParseQuery<ParseObject> query = ParseQuery.getQuery("Corporate");
         query.whereEqualTo("objectId", myString);
+
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (object != null) {
@@ -104,7 +104,6 @@ class myAdapter extends ArrayAdapter<String>{
         this.context = context;
         this.park_name = park_name;
         this.park_status = park_status;
-
     }
 
     @Override
