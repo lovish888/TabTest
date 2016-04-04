@@ -21,7 +21,7 @@ public class CyberHubParking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cyberhub_parking);
 
-        /*Bundle bundle = null;
+        Bundle bundle = null;
         bundle = this.getIntent().getExtras();
         myString = bundle.getString("Name");
 
@@ -45,6 +45,6 @@ public class CyberHubParking extends AppCompatActivity {
                     mFairDetails.setText(object.getString("fair"));
                 }
             }
-        });*/
+        });
     }
 }

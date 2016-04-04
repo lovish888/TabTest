@@ -109,19 +109,15 @@ public class second extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
-            //startActivity(new Intent(second.this,MyProfile.class));
-
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.favorites) {
             Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.rate_us) {
             Intent market = new Intent(Intent.ACTION_VIEW);
             market.setData(Uri.parse("market://details?id=xyz.wheretopark.tabtest&hl=en"));
             startActivity(Intent.createChooser(market,"Launch Market"));
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.logout) {
 
             // Logging out and Clearing user data via shared Preference. Maybe needed in future.
             /*UserLocalStore  userLocalStore;
@@ -133,7 +129,7 @@ public class second extends AppCompatActivity
             startActivity(new Intent(second.this, LoginActivity.class));
             //Toast.makeText(second.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             String shareBody = "I am using this awesome android app.";
@@ -141,7 +137,7 @@ public class second extends AppCompatActivity
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.contact_us) {
             Intent contact = new Intent(Intent.ACTION_SEND);
             contact.setData(Uri.parse("mailto:"));
             String[] to = {"hello@wheretopark.xyz"};

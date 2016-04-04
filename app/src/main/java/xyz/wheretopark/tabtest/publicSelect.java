@@ -31,7 +31,7 @@ public class publicSelect extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position >= 0) {
+                if (position > 0) {
                     final ParseQuery<ParseObject> query = ParseQuery.getQuery("Public");
                     final String parking_name = parent.getItemAtPosition(position).toString();
                     query.whereEqualTo("parking_name", parking_name.toUpperCase());
@@ -46,6 +46,9 @@ public class publicSelect extends AppCompatActivity {
                             }
                         }
                     });
+                }
+                else if (position == 0) {
+                    Toast.makeText(publicSelect.this, "Select Company", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
