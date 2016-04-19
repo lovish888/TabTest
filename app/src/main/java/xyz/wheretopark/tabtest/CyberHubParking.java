@@ -34,15 +34,15 @@ public class CyberHubParking extends AppCompatActivity {
     }
 
     public void parseDataFromParse() {
-        final ParseQuery<ParseObject> query = ParseQuery.getQuery("Public");
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery("CyberHub");
         query.whereEqualTo("objectId", myString);
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (object != null) {
-                    mParkingName.setText(object.getString("parking_name"));
-                    mAddressDetails.setText(object.getString("address"));
-                    mCurrentStatusDetails.setText(object.getString("current_status"));
-                    mFairDetails.setText(object.getString("fair"));
+                    mParkingName.setText(object.getString("name"));
+                    //mAddressDetails.setText(object.getString("address"));
+                    mCurrentStatusDetails.setText(object.getString("parking_count"));
+                    //mFairDetails.setText(object.getString("fair"));
                 }
             }
         });

@@ -17,6 +17,7 @@
     <string name="details2">text2</string>
     <string name="title3">Fair</string>
     <string name="details3">text3</string>
+    <string name="wheretopark">WhereToPark</string>
 
 
     <string-array name="company_list">
@@ -41,8 +42,8 @@
 
     <string-array name="cyberhub_parking_select">
         <item>CYBER HUB</item>
-        <item>P1 PARKING</item>
-        <item>P2 PARKING</item>
-        <item>P3 PARKING</item>
+        <item>P1 Parking</item>
+        <item>P2 Parking</item>
+        <item>P3 Parking</item>
     </string-array>
 </resources>

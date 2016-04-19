@@ -32,23 +32,23 @@ public class publicSelect extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
-                    final ParseQuery<ParseObject> query = ParseQuery.getQuery("Public");
+                    final ParseQuery<ParseObject> query = ParseQuery.getQuery("CyberHub");
                     final String parking_name = parent.getItemAtPosition(position).toString();
-                    query.whereEqualTo("parking_name", parking_name.toUpperCase());
+                    query.whereEqualTo("name", parking_name);
                     query.getFirstInBackground(new GetCallback<ParseObject>() {
                         public void done(ParseObject object, ParseException e) {
-                            if (object == null) {
-                               // Bundle bundle = new Bundle();
-                               // bundle.putString("Name", object.getObjectId()); //This is for a String
+                            if (object != null) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("Name", object.getObjectId());
                                 Intent i = new Intent(publicSelect.this, CyberHubParking.class);
-                               // i.putExtras(bundle);
+                                i.putExtras(bundle);
                                 startActivity(i);
                             }
                         }
                     });
                 }
                 else if (position == 0) {
-                    Toast.makeText(publicSelect.this, "Select Company", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(publicSelect.this, "Select parking", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
