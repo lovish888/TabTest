@@ -21,11 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="WhereToPark"
+        android:text="@string/wheretopark"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textAlignment="textStart"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:gravity="start" />
 
 </LinearLayout>

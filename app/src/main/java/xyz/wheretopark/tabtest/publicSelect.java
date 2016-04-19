@@ -1,24 +1,59 @@
 package xyz.wheretopark.tabtest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class publicSelect extends AppCompatActivity {
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+public class publicSelect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_select);
 
-        Button b2 = (Button) findViewById(R.id.button);
-        b2.setOnClickListener(new View.OnClickListener() {
+        Spinner spinner = (Spinner) findViewById(R.id.cyberhub_spin);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cyberhub_parking_select, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    final ParseQuery<ParseObject> query = ParseQuery.getQuery("CyberHub");
+                    final String parking_name = parent.getItemAtPosition(position).toString();
+                    query.whereEqualTo("name", parking_name);
+                    query.getFirstInBackground(new GetCallback<ParseObject>() {
+                        public void done(ParseObject object, ParseException e) {
+                            if (object != null) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("Name", object.getObjectId());
+                                Intent i = new Intent(publicSelect.this, CyberHubParking.class);
+                                i.putExtras(bundle);
+                                startActivity(i);
+                            }
+                        }
+                    });
+                }
+                else if (position == 0) {
+                    Toast.makeText(publicSelect.this, "Select parking", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-                Toast.makeText(publicSelect.this, "Coming Soon", Toast.LENGTH_SHORT).show();
             }
         });
     }

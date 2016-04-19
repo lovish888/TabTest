@@ -22,9 +22,6 @@ public class corporateSelect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_corporate_select);
 
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "nVul6sjXS7F5FfVLOX0o0a1GIkDuCYS1yBzQpVgn", "SxoJJ4y5vbg53noEtAv0RvFKuujw4OgZSXJsM8ct");
-
         Spinner spinner = (Spinner) findViewById(R.id.company_spin);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.company_list, android.R.layout.simple_spinner_dropdown_item);
 
@@ -33,7 +30,7 @@ public class corporateSelect extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position >= 0) {
+                if (position > 0) {
                     final ParseQuery<ParseObject> query = ParseQuery.getQuery("Corporate");
                     final String company_name = parent.getItemAtPosition(position).toString();
                     query.whereEqualTo("company_name", company_name.toUpperCase());
@@ -49,7 +46,7 @@ public class corporateSelect extends AppCompatActivity {
                         }
                     });
                 }
-                else if (position == 0){
+                else if (position == 0) {
                     Toast.makeText(corporateSelect.this, "Select Company", Toast.LENGTH_SHORT).show();
                 }
             }
