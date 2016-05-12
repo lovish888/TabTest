@@ -1,25 +1,36 @@
 <resources>
     <string name="app_name">WhereToPark</string>
     <string name="title_activity_second">WhereToPark</string>
+    <string name="wheretopark">WhereToPark</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    //Login And Signup
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_text">Login</string>
     <string name="anonymous_login_text">Choose your one time Username:</string>
     <string name="forget_password_text">Forgot Password?</string>
     <string name="signup_long_text">No account yet? Create one</string>
+
     <string name="off_time">Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.</string>
-    <string name="title1">Parking Details</string>
-    <string name="details1a">Opening time - 9:00 am</string>
-    <string name="details1b">Last car entry time - 11:59 pm</string>
-    <string name="details1c">Parking closing time for entry is 00:00 exit till last car exit.</string>
-    <string name="title2">Current Status</string>
-    <string name="details2">text2</string>
-    <string name="title3">Fare</string>
-    <string name="details3">text3</string>
-    <string name="wheretopark">WhereToPark</string>
+
+    <string name="parking_name">Parking Name</string>
+
+    <string name="current_status">Current Status</string>
+    <string name="statusDetailsA">slots available</string>
+
+    <string name="parking_details">Parking Details</string>
+    <string name="parking_detailsA">Opening time - 9:00 am</string>
+    <string name="parking_detailsB">Last car entry time - 11:59 pm</string>
+    <string name="parking_detailsC">Parking closing time for entry is 00:00 exit till last car exit.</string>
+
+    <string name="fare">Fare</string>
+    <string name="fare_detailsA">Rs 40 for first three hours</string>
+    <string name="fare_detailsB">Rs 100 per hour thereafter</string>
+
+
 
 
     <string-array name="company_list">
@@ -46,6 +57,5 @@
         <item>CYBER HUB</item>
         <item>P1 Parking</item>
         <item>P2 Parking</item>
-        <item>P3 Parking</item>
     </string-array>
 </resources>

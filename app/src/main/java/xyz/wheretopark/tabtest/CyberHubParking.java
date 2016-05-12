@@ -13,7 +13,7 @@ import com.parse.ParseQuery;
 public class CyberHubParking extends AppCompatActivity {
 
     LinearLayout mImage;
-    TextView mParkingName, mAddress, mAddressDetails, mCurrentStatus, mCurrentStatusDetails, mFair, mFairDetails;
+    TextView mParkingName, mCurrentStatusDetails;
     String myString;
 
     @Override
@@ -27,9 +27,7 @@ public class CyberHubParking extends AppCompatActivity {
 
         mImage = (LinearLayout) findViewById(R.id.parkingImage);
         mParkingName = (TextView) findViewById(R.id.parkingName);
-        //mAddressDetails = (TextView) findViewById(R.id.addressDetails);
         mCurrentStatusDetails = (TextView) findViewById(R.id.currentStatusDetails);
-        mFairDetails = (TextView) findViewById(R.id.fairDetails);
         parseDataFromParse();
     }
 
@@ -40,9 +38,7 @@ public class CyberHubParking extends AppCompatActivity {
             public void done(ParseObject object, ParseException e) {
                 if (object != null) {
                     mParkingName.setText(object.getString("name"));
-                    //mAddressDetails.setText(object.getString("address"));
                     mCurrentStatusDetails.setText(object.getString("parking_count"));
-                    //mFairDetails.setText(object.getString("fair"));
                 }
             }
         });
