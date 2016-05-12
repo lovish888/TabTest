@@ -12,7 +12,9 @@
     <string name="signup_long_text">No account yet? Create one</string>
     <string name="off_time">Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.</string>
     <string name="title1">Parking Details</string>
-    <string name="details1">text</string>
+    <string name="details1a">Opening time - 9:00am</string>
+    <string name="details1b">Last car entry time - 11:59 pm</string>
+    <string name="details1c">Parking closing time for entry is 00:00 exit till last car exit.</string>
     <string name="title2">Current Status</string>
     <string name="details2">text2</string>
     <string name="title3">Fare</string>
