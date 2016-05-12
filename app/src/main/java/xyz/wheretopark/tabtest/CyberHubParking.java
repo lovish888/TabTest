@@ -27,7 +27,7 @@ public class CyberHubParking extends AppCompatActivity {
 
         mImage = (LinearLayout) findViewById(R.id.parkingImage);
         mParkingName = (TextView) findViewById(R.id.parkingName);
-        mAddressDetails = (TextView) findViewById(R.id.addressDetails);
+        //mAddressDetails = (TextView) findViewById(R.id.addressDetails);
         mCurrentStatusDetails = (TextView) findViewById(R.id.currentStatusDetails);
         mFairDetails = (TextView) findViewById(R.id.fairDetails);
         parseDataFromParse();
