@@ -38,7 +38,8 @@ public class CyberHubParking extends AppCompatActivity {
             public void done(ParseObject object, ParseException e) {
                 if (object != null) {
                     mParkingName.setText(object.getString("name"));
-                    mCurrentStatusDetails.setText(object.getString("parking_count"));
+                    String slots = " slots available";
+                    mCurrentStatusDetails.setText(object.getString("parking_count") + slots);
                 }
             }
         });

@@ -23,8 +23,7 @@ public class second extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TabHost tabHost;
-    //Calendar c = Calendar.getInstance();
-    //int hour = c.get(Calendar.HOUR_OF_DAY);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +131,7 @@ public class second extends AppCompatActivity
         } else if (id == R.id.share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBody = "I am using this awesome android app.";
+            String shareBody = "Use this awesome app to check real time availability of parking anywhere. ";
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody +"\nDownload: https://play.google.com/store/apps/details?id=xyz.wheretopark.tabtest&hl=en");
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 

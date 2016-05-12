@@ -63,10 +63,10 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
                 if (object != null) {
                     tv.setText(object.getString("company_name"));
                 if(hour>=7 && hour<16) {
-                    String time = String.format("Last Updated: " + format.format(calendar.getTime()));
+                    String time = "Last Updated: " + format.format(calendar.getTime());
                     tv1.setText(time);
                 }else{
-                    String timeOver = String.format("Last Updated: " + format1.format(calendar.getTime()) + "04:00:00 PM");
+                    String timeOver = "Last Updated: " + format1.format(calendar.getTime()) + "04:00:00 PM";
                     tv1.setText(timeOver);
                 }
                     ArrayList<String> parking_name = (ArrayList<String>) object.get("parking_name");
