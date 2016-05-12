@@ -9,7 +9,7 @@
         android:id="@+id/parkingImage"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@drawable/cyberHubBackground"
+        android:background="@drawable/cyberhubbackground"
         android:orientation="horizontal" />
 
     <TextView
