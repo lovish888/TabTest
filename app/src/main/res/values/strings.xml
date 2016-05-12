@@ -11,11 +11,11 @@
     <string name="forget_password_text">Forgot Password?</string>
     <string name="signup_long_text">No account yet? Create one</string>
     <string name="off_time">Please note that currently we operate from Monday to Friday 7:00am to 4:00pm IST. We thank you for visiting us.</string>
-    <string name="title1">Address</string>
+    <string name="title1">Parking Details</string>
     <string name="details1">text</string>
     <string name="title2">Current Status</string>
     <string name="details2">text2</string>
-    <string name="title3">Fair</string>
+    <string name="title3">Fare</string>
     <string name="details3">text3</string>
     <string name="wheretopark">WhereToPark</string>
 
