@@ -1,192 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parking_swipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="xyz.wheretopark.tabtest.CyberHubParking"
-    android:background="#1f4e79">
+    android:background="#ffffff"
+    tools:context="xyz.wheretopark.tabtest.CyberHubParking">
 
-    <LinearLayout
-        android:id="@+id/parkingImage"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@drawable/cyberhubbackground"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:id="@+id/parkingName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/parkingImage"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:text="@string/parking_name" />
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/parkingImage"
-        android:scrollbarStyle="outsideOverlay">
+        android:background="#1f4e79">
 
         <LinearLayout
+            android:id="@+id/parkingImage"
             android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@drawable/cyberhubbackground"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/parkingName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_alignBottom="@+id/parkingImage"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/parking_name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/statusCard"
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/parkingImage"
+            android:scrollbarStyle="outsideOverlay">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:foreground="?android:selectableItemBackground"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="2dp"
-                card_view:cardElevation="2dp"
-                card_view:cardUseCompatPadding="false">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
+                    android:id="@+id/statusCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_margin="12dp"
+                    android:foreground="?android:selectableItemBackground"
+                    card_view:cardBackgroundColor="@android:color/white"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="2dp"
+                    card_view:cardUseCompatPadding="false">
 
-                    <TextView
-                        android:id="@+id/currentStatus"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/current_status"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/currentStatusDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/statusDetailsA"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/currentStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/current_status"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/parkingDetailsCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:foreground="?android:selectableItemBackground"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="2dp"
-                card_view:cardElevation="2dp"
-                card_view:cardUseCompatPadding="false">
+                        <TextView
+                            android:id="@+id/currentStatusDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/statusDetailsA"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
+                    android:id="@+id/parkingDetailsCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_margin="12dp"
+                    android:foreground="?android:selectableItemBackground"
+                    card_view:cardBackgroundColor="@android:color/white"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="2dp"
+                    card_view:cardUseCompatPadding="false">
 
-                    <TextView
-                        android:id="@+id/parkingDetails"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/parking_details"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/parkingDetailsA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/parking_detailsA"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/parkingDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/parking_details"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/parkingDetailsB"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/parking_detailsB"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/parkingDetailsA"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/parking_detailsA"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
 
-                    <TextView
-                        android:id="@+id/parkingDetailsC"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/parking_detailsC"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/parkingDetailsB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/parking_detailsB"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/fareCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:foreground="?android:selectableItemBackground"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="2dp"
-                card_view:cardElevation="2dp"
-                card_view:cardUseCompatPadding="false">
+                        <TextView
+                            android:id="@+id/parkingDetailsC"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/parking_detailsC"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
+                    android:id="@+id/fareCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_margin="12dp"
+                    android:foreground="?android:selectableItemBackground"
+                    card_view:cardBackgroundColor="@android:color/white"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="2dp"
+                    card_view:cardUseCompatPadding="false">
 
-                    <TextView
-                        android:id="@+id/fare"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/fare"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/fareDetailsA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/fare_detailsA"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/fare"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fare"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/fareDetailsB"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/fare_detailsB"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/fareDetailsA"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/fare_detailsA"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
 
-        </LinearLayout>
+                        <TextView
+                            android:id="@+id/fareDetailsB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/fare_detailsB"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-    </ScrollView>
-</RelativeLayout>
+            </LinearLayout>
+
+        </ScrollView>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

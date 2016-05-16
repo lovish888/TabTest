@@ -1,16 +1,16 @@
 package xyz.wheretopark.tabtest;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +23,11 @@ import com.parse.ParseQuery;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.RunnableFuture;
 
+import android.os.Handler;
 
-public class companyShow extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class companyShow extends AppCompatActivity {
 
     static TextView tv;
     static TextView tv1;
@@ -38,6 +40,7 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
     int hour = calendar.get(Calendar.HOUR_OF_DAY);
     SimpleDateFormat format,format1;
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +50,34 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
         myString = bundle.getString("Name");
         tv = (TextView) findViewById(R.id.company_name);
         tv1 = (TextView) findViewById(R.id.textView4);
+
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
+
         format = new SimpleDateFormat("E MMM dd hh:mm:ss a");
         format1 = new SimpleDateFormat("E MMM dd ");
         parseDataFromParse();
-
+        Toast.makeText(companyShow.this, "You may need to wait as some of the tokens for these slots might be at the exit points.", Toast.LENGTH_LONG).show();
     }
 
-    public void parseDataFromParse() {final ParseQuery<ParseObject> query = ParseQuery.getQuery("Corporate");
+    private void refresh() {
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                parseDataFromParse();
+                Log.d("Filter",tv1.toString());
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        },3000);
+    }
+
+    public void parseDataFromParse() {
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery("Corporate");
         query.whereEqualTo("objectId", myString);
 
         query.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -85,12 +107,6 @@ public class companyShow extends AppCompatActivity implements SwipeRefreshLayout
         myAdapter adapter = new myAdapter(this,park_name,park_status);
         listView.setAdapter(adapter);
 
-        Toast.makeText(companyShow.this, "You may need to wait as some of the tokens for these slots might be at the exit points.", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onRefresh() {
-        parseDataFromParse();
     }
 }
 
